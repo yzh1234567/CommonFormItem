@@ -1,0 +1,62 @@
+{
+  "name": "CommonFormItem",
+  "version": "1.0.0",
+  "description": "这个组件是一个万能表单组件;不受不同项目组件库不同的影响;采用jsx写法;动态渲染表单元素",
+  "keywords": [
+    "表单",
+    "vue",
+    "jsx",
+    "form",
+    "自定义Form",
+    "自定义表单配置"
+  ],
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.umd.min.js",
+  "author": "yzh1234567",
+  "license": "MIT",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --target lib --name index src/main.js",
+    "lint": "vue-cli-service lint",
+    "docs": "vuese gen"
+  },
+  "dependencies": {
+    "compression-webpack-plugin": "^4.0.0",
+    "core-js": "^3.22.2",
+    "husky": "^7.0.4",
+    "terser-webpack-plugin": "^5.3.1",
+    "vue": "^2.6.14"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.5.17",
+    "@vue/cli-plugin-eslint": "^4.5.17",
+    "@vue/cli-service": "^4.5.17",
+    "@vue/composition-api": "^1.5.0",
+    "@vuese/cli": "^2.14.3",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-plugin-vue": "^6.2.2",
+    "vue-template-compiler": "^2.6.14"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
+}
