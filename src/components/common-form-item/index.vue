@@ -22,11 +22,11 @@ export default {
     },
   },
   render() {
-    return this.renderItem(this.info)
+    return this.renderItem(this.data)
   },
   methods: {
     productValue(e) {
-      this.form[this.info.name] = e
+      this.form[this.data.name] = e
     },
     renderItem(element) {
       let renderObj = {
@@ -77,35 +77,6 @@ export default {
                 </tag>
               )
         }
-      }
-       if ( ["el-radio-group",'el-radio'].includes(element.tag)) {
-        return (
-            <div>{
-              element.options.map((e, index) => {
-                let attrs ={
-                  ...e,
-                  attrs:{...e}
-                }
-                return element.block ? (
-                  <el-col key={index}>
-                    <el-radio {...attrs}  
-                       label={e.value} 
-                       vModel={this.form[element.name]} 
-                      >
-                      {e.label}
-                    </el-radio>
-                  </el-col>
-                ) : (
-                  <el-radio {...attrs}  
-                       label={e.value} 
-                       vModel={this.form[element.name]} 
-                      >
-                    {e.label}
-                  </el-radio>
-                )
-              })
-            }</div>
-        )
       }
       return (
         <tag

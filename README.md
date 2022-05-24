@@ -13,14 +13,14 @@
 
 ## 例子
 
-# import BaseForm from "baseformjsx"
+# import CommonFormItem from "common_form_item"
 
-# Vue.use(BaseForm)
+# Vue.use(CommonFormItem)
 
-# 这样你的项目中可以使用一个common-form组件；这个组件是一个万能表单组件;不受不同项目组件库不同的影响;
-# 这样你可以使用common-form组件封装成自己项目的需求
+# 这样你的项目中可以使用一个CommonFormItem组件；这个组件是一个万能表单组件;不受不同项目组件库不同的影响;
+# 这样你可以使用CommonFormItem组件封装成自己项目的需求
 
-# <common-form :data='fields[0]||fields[1]' :form="form"></common-form>
+# <common-form-item :data='fields[0]||fields[1]' :form="form"></common-form-item>
 
 ```vue
 <template>
@@ -34,36 +34,6 @@
 export default {
        data(){
            return {
-               operation:{
-                   class:{
-                     'for':true
-                   },
-                   style:{
-                       fontSize:'18px'
-                   },
-                   btns:[
-                         {
-                            type: "primary",
-                            plain: false,
-                            round: false,
-                            circle: false,
-                            disabled: false,
-                            icon: "",
-                            text: "搜索",
-                            tag :'el-button',
-                        },
-                        {
-                            type: "",
-                            plain: false,
-                            round: false,
-                            circle: false,
-                            disabled: false,
-                            icon: "",
-                            text: "重置",
-                            tag :'el-button',
-                        }
-                    ]
-               },
                form:{
                  name:'',
                  sex:'',

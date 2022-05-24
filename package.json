@@ -1,6 +1,6 @@
 {
-  "name": "CommonFormItem",
-  "version": "1.0.0",
+  "name": "common_form_item",
+  "version": "1.0.5",
   "description": "这个组件是一个万能表单组件;不受不同项目组件库不同的影响;采用jsx写法;动态渲染表单元素",
   "keywords": [
     "表单",
