@@ -30,7 +30,7 @@
 </template>
 
 <script>
-
+//  type为select\checkbox\radio时表示父子组件；一定要options与childTag有值;否则不会渲染
 export default {
        data(){
            return {
@@ -46,9 +46,7 @@ export default {
                     options:[], //为下拉选择框\多选框\单选框准备
                     type:'text', //指明文本框是输入框、文本域、单选、多选、下拉选择框,可选择值text|textarea|select|checkbox|radio 和其他 原生 input 的 type 值
                     name:'name',
-                    value:'',  //默认值
                     label:'姓名',
-                    block:true,//用于判断元素是用块级元素渲染还是行级元素渲染
                     clearable:true,
                     placeholder:'请输入姓名',
                     maxlength:10,
@@ -62,6 +60,20 @@ export default {
                     style:{
                         width:'300px'
                     },
+                    scopedSlots:{
+                        heander:(props)=>{
+                            return (
+                                <span>天</span>
+                            )
+                        }
+                    }, //作用域插槽写法 距离是该组件有一个header的作用域插槽
+                    slots:{
+                        suffix:()=>{
+                            return (
+                                <span>天</span>
+                            )
+                        }
+                    }, //插槽写法
                     ...  //兼容element form表单元素的任意属性
                  },
                  {
@@ -69,10 +81,8 @@ export default {
                     tag:'el-select',
                     type:'select',
                     name:'sex',
-                    value:'',  //默认值
                     label:'性别',
                     childTag:'el-option',//针对复合元素才有该属性；指明子元素
-                    block:true,//用于判断元素是用块级元素渲染还是行级元素渲染
                     clearable:true,
                     placeholder:'请输入姓名',
                     maxlength:10,
@@ -98,8 +108,6 @@ export default {
                     childTag:'el-checkbox',//针对复合元素才有该属性；指明子元素
                     type:'checkbox',
                     name:'channel',
-                    value:'',
-                    button:true, //用于判断单选、多选框是否为按钮组
                     placeholder:'请选择渠道',
                     options:[
                         {
@@ -118,8 +126,6 @@ export default {
                     childTag:'el-radio',//针对复合元素才有该属性；指明子元素
                     type:'radio',
                     name:'sex',
-                    value:'',
-                    button:true, //用于判断单选、多选框是否为按钮组
                     placeholder:'请选择性别',
                     options:[
                         {

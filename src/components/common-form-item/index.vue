@@ -29,9 +29,12 @@ export default {
       this.form[this.data.name] = e
     },
     renderItem(element) {
+      let slots = element.slots
+      let attrs = this.depCopy(element,['on','slots','scopedSlots','nativeOn','slot'])
+      let ele =  this.depCopy(element,['slots'])
       let renderObj = {
-        ...element,
-        attrs: { ...element },
+        ...ele,
+        attrs: { ...attrs },
       }
       let tag = element.tag || "input"
       let childTag = element.childTag
@@ -41,7 +44,9 @@ export default {
         if(type ==='select'){
             return (
                 <tag {...renderObj} vModel={this.form[element.name]}>
-                  {element.options.map((e, index) => {
+                  {
+                    slots?this.productSlots(slots):
+                    element.options.map((e, index) => {
                     let attrs = {
                       ...e,
                       attrs: { ...e },
@@ -54,14 +59,17 @@ export default {
                         key={index}
                       ></childTag>
                     )
-                  })}
+                  })
+                  }
                 </tag>
               )
         }
         if(['checkbox','radio'].includes(type)){
             return (
                 <tag {...renderObj} vModel={this.form[element.name]}>
-                  {element.options.map((e, index) => {
+                  {
+                    slots?this.productSlots(slots):
+                    element.options.map((e, index) => {
                     let attrs = {
                       ...e,
                       attrs: { ...e },
@@ -73,7 +81,8 @@ export default {
                         key={index}
                       >{e.label}</childTag>
                     )
-                  })}
+                  })
+                }
                 </tag>
               )
         }
@@ -82,9 +91,32 @@ export default {
         <tag
           {...renderObj}
           vModel={this.form[element.name]}
-        ></tag>
+        >
+        {slots&&this.productSlots(slots)}
+        </tag>
       )
     },
+    productSlots(slots){
+         return Object.keys(slots).map((key,index)=>{
+            return (
+              <div slot={key} key={index}>
+               {slots[key]()}
+              </div>
+            )
+          })
+    },
+    depCopy(obj,arr=[]){
+       if(!Array.isArray(arr)){
+        arr = []
+       }
+       let attrs = {}
+       for(let key in obj){
+         if(!arr.includes(key)){
+          attrs[key] = obj[key]
+         }
+       }
+       return attrs
+    }
   },
 }
 </script>
